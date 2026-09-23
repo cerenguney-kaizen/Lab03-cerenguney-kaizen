@@ -10,26 +10,50 @@ def pig_latin(word):
     # TODO (Part 1): return the Pig Latin form of a single lowercase word.
     #   If it starts with a vowel (a, e, i, o, u): add "way" to the end.
     #   Otherwise: move the first letter to the end and add "ay".
-    pass
+    if word[0] in "aeiou":
+        return word + "way"
+    else:
+        return word[1:] + word[0] + "ay"
+print(pig_latin("ate"))
+print(pig_latin("banana"))
+print(pig_latin("what"))
+
 
 
 def word_lengths(sentence):
     # TODO (Part 2): return a list with the length of each word in `sentence`
     #   (words are separated by spaces).
-    pass
+    lengths = []
+    for character in sentence.split():
+        lengths.append(len(character))
+    return lengths
+print(word_lengths("the quick brown fox") )
+print(word_lengths("")  )
 
 
 def reverse_words(sentence):
     # TODO (Part 3): return `sentence` with the order of its words reversed.
     #   e.g. "hello world" -> "world hello"
-    pass
+    words = sentence.split()
+    backwards = words[::-1]
+    return " ".join(backwards)
+print(reverse_words("the quick brown fox"))
+
 
 
 def letter_counts(text):
     # TODO (Part 4 - STRETCH, optional): return a dictionary mapping each letter
     #   to how many times it appears in `text`. Ignore case, and ignore anything
     #   that isn't a letter.
-    pass
+    counts = {}
+    for letter in text.lower():
+        if letter.isalpha():
+            if letter in counts:
+                counts[letter] += 1
+            else:
+                counts[letter] = 1
+    return counts
+print(letter_counts("hello"))
 
 
 def main():
